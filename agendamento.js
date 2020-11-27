@@ -3,11 +3,11 @@ function carregaAgencias(){
 
     /*
     pensando "estruturado"
-    res = fetch("http://localhost:8080/agencias)
+    res = fetch("http://agendador-isidrovisk.herokuapp.com/agencias)
     lista = res.json();
     preenche(lista);
     */
-    fetch("http://localhost:8080/agencias")
+    fetch("http://agendador-isidrovisk.herokuapp.com/agencias")
          .then(res => res.json())   // se eu receber uma resposta, vou ter q extrair o JSON da resposta
          .then(lista => preenche(lista)) // se der cert, passo isso para uma função que irá gerar dinamicamente meu select
 }
@@ -56,6 +56,8 @@ function gerahorafinal(){
 
 
 function cadastrar(){
+
+    
     var txtNomeCli  = document.getElementById("txtNome").value;
     var txtEmailCli = document.getElementById("txtEmail").value;
     var txtCelCli   = document.getElementById("txtTelefone").value;
@@ -64,7 +66,8 @@ function cadastrar(){
     var txtHoraIni  = document.getElementById("txtHoraInicio").value;
     var txtObs      = document.getElementById("txtObservacao").value;
 
-
+    
+    
     var msgBody = {
         nomeCliente : txtNomeCli,
         emailCliente : txtEmailCli,
@@ -84,10 +87,13 @@ function cadastrar(){
             "content-type" : "application/json"
         }
     };
-
-    fetch("http://localhost:8080/novoagendamento",cabecalho)
-        .then(res => trataResultado(res));
+    
+    fetch("http://agendador-isidrovisk.herokuapp.com/novoagendamento",cabecalho)
+    .then(res => trataResultado(res));
 }
+   
+
+
 
 function trataResultado(res){
     if (res.status == 201){
@@ -96,4 +102,34 @@ function trataResultado(res){
     else{
         alert("ERRO ao atender solicitacao");
     }
+}
+
+function CheckNosCampos(){
+
+   if(!document.getElementById("txtNome").value){
+    alert("Preenchimento do nome é obrigatório!")
+    return
+   }   
+   if(!document.getElementById("txtEmail").value){
+    alert("Preenchimento do email é obrigatório!")
+    return
+   }
+   if(!document.getElementById("txtTelefone").value){
+    alert("Preenchimento do Telefone é obrigatório!")
+    return
+   }
+   if(!document.getElementById("txtData").value){
+    alert("Preenchimento do Data é obrigatório!")
+    return
+   }
+   if(!document.getElementById("txtAgencia").value){
+    alert("Preenchimento do Agencia é obrigatório!")
+    return
+   }
+   if(!document.getElementById("txtHoraInicio").value){
+    alert("Preenchimento do Hora Inicial é obrigatório!")
+    return
+   }
+
+   cadastrar();
 }

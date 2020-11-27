@@ -20,7 +20,7 @@ function autenticar(){
     };
 
     //Enviar para o backend
-    fetch("http://localhost:8080/login", cabecalho).then(resposta =>trataResposta(resposta));
+    fetch("http://agendador-isidrovisk.herokuapp.com/login", cabecalho).then(resposta =>trataResposta(resposta));
 }
 
 function trataResposta(resposta){
