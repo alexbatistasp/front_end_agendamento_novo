@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script type="text/javascript" src="relatorio.js"></script>
+    <title>Pagina Cliente Para Agendamento</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body onload="validaUser()" id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index_sistema.html">
+                <div class="sidebar-brand-icon rotate-n-15">                  
+                    <img src="./img/logo-app-Itau.png"  >
+                </div>
+                <div class="sidebar-brand-text mx-3">Itaú <sup>Agências</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <span>" 
+                    "</span></a>                   
+            </li>
+           
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html" onclick="limpaUser()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span></a>                
+            </li>
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">                    
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Relatorio de Agendamentos</span>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                     <!-- Aqui vai meu código -->
+                     
+                     <div class="container">                    
+                
+                        <!-- linha que corresponde aos dados do usuario -->
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4" id="fotoUser">
+                                **Aqui vai a foto do usuario ***
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8" id="bioUser">
+                                *** aqui vai a biografia do usuario ***
+                            </div>
+                        </div>
+                        <p><span></span></p>
+                        <!-- div do filtro-->
+                        <label for="filtro">Selecione seu relatorio</label>
+                        <div id="filtro">
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="chkAgencia">
+                                        <label class="form-check-label" for="chkAgencia">Agencia</label>
+                                    </div>
+                                </div>
+                                <div class="col-9" id="selectAgencia">
+                                    *** aqui vai o select da agencia ***
+                
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="chkData">
+                                        <label class="form-check-label" for="chkData">Data</label>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <input type="date" class="form-control" id="txtData">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="chkCliente">
+                                        <label class="form-check-label" for="chkCliente">Cliente</label>
+                                    </div>
+                                </div>
+                                <div class="col-9">
+                                    <input type="text" id="txtCliente" class="form-control">
+                                </div>
+                            </div>
+                
+                            <div class="row">
+                                <div class="col-12">
+                                    <button type="button" class="btn btn-primary" onclick="gerarRelatorio()">Gerar Relatório</button>
+                                </div>
+                            </div>
+                
+                        </div>
+                
+                        <!-- div do relatorio-->
+                        <div id="relatorio">
+                
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Agendador para agências 2020</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+     <!-- lib para ocultar ou mostrar-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
